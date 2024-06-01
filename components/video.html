@@ -48,19 +48,25 @@
 		video.addEventListener("loadeddata", handleEvent);
 		video.addEventListener("loadedmetadata", handleEvent);
 		video.addEventListener("play", handleEvent);
-		video.addEventListener("playing", handleEvent);
+		// video.addEventListener("playing", handleEvent);
 		video.addEventListener("progress", handleEvent);
-		video.addEventListener("canplay", handleEvent);
-		video.addEventListener("canplaythrough", handleEvent);
-
-		// let playPromise = video.play()
-		// console.log('playPromise:', playPromise)
-		// playPromise.then(e => {
-		// 	console.log('then', e);
-		// }).catch(error => {
-		// 	console.log('не загружается: ' + error);
-		// });
+		// video.addEventListener("canplay", handleEvent);
+		// video.addEventListener("canplaythrough", handleEvent);
 		
+		let playPromise
+		playPromise = video.play()
+		// logger('playPromise:', playPromise)
+		if (playPromise !== undefined) {
+			playPromise.then(e => {
+				logger('then', e);
+			}).catch(error => {
+				logger('не загружается: ' + error);
+			});
+		} else {
+			logger('playPromise is undefined')
+		}
+
+
 		// logger('playPromise:', playPromise)
 
 		let startTime = Date.now();
