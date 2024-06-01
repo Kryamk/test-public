@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Test simple</title>
+	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="/css/main.css">
+	<script src="/js/main.js"></script>
+</head>
+
+<body>
+
+	<style>
+
+	</style>
+
+	<section class="hero">
+		<div class="container">
+			<div class="hero-wrapper">
+				<h1 class="hero-title">Video</h1>
+			</div>
+		</div>
+		<div class="video-wrap">
+			<video class="video" autoplay muted loop playsinline data-src="/video/placeholder.mp4"></video>
+			<picture class="video-preview-wrap">
+				<source media="(max-width: 743px)" srcset="/images/test3.jpg">
+				<img class="video-preview" src="/images/test4.jpg">
+			</picture>
+		</div>
+	</section>
+
+	<pre id="log"></pre>
+
+	<script>
+		let videoWrap = document.querySelector('.video-wrap')
+		let video = videoWrap.querySelector('.video')
+		let dataSrc = video.dataset.src
+		video.src = dataSrc;
+
+		function handleEvent(event) {
+			log.textContent += `${event.type}\n`;
+		}
+
+
+		video.addEventListener("loadstart", handleEvent);
+		video.addEventListener("loadeddata", handleEvent);
+		video.addEventListener("loadedmetadata", handleEvent);
+		video.addEventListener("play", handleEvent);
+		video.addEventListener("playing", handleEvent);
+		video.addEventListener("progress", handleEvent);
+		video.addEventListener("canplay", handleEvent);
+		video.addEventListener("canplaythrough", handleEvent);
+
+		// let playPromise = video.play()
+		// console.log('playPromise:', playPromise)
+		// playPromise.then(e => {
+		// 	console.log('then', e);
+		// }).catch(error => {
+		// 	console.log('не загружается: ' + error);
+		// });
+		
+		// logger('playPromise:', playPromise)
+
+		let startTime = Date.now();
+		video.addEventListener('loadeddata', function onLoadedData(e) {
+			console.log('loadeddata');
+
+			let elapsedTime = Date.now() - startTime
+			let remainingTime = Math.max(0, 1000 - elapsedTime)
+
+			setTimeout(() => {
+				videoWrap.classList.add('play')
+			}, remainingTime);
+		})
+
+
+
+
+
+
+
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
