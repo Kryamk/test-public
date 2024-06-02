@@ -24,11 +24,12 @@
 		<!-- </div> -->
 
 		<div class="video-wrap">
-			<video class="video" muted loop playsinline data-src="/video/placeholder4.mp4"></video>
+			<!-- <video class="video" muted loop playsinline data-src="/video/placeholder4.mp4"></video> -->
 			<picture class="video-preview-wrap">
 				<source media="(max-width: 743px)" srcset="/images/test3.jpg">
 				<img class="video-preview" src="/images/test4.jpg">
 			</picture>
+			<video class="video" autoplay muted loop playsinline src="/video/placeholder4.mp4"></video>
 			<!-- <img class="video-preview-wrap" src="/images/test4.jpg"> -->
 			<!-- <div class="video-preview-wrap"></div> -->
 		</div>
@@ -37,29 +38,29 @@
 	<pre id="log"></pre>
 
 	<script>
-		let videoWrap = document.querySelector('.video-wrap')
-		let video = videoWrap.querySelector('.video')
-		let dataSrc = video.dataset.src
-		video.src = dataSrc;
+		// let videoWrap = document.querySelector('.video-wrap')
+		// let video = videoWrap.querySelector('.video')
+		// let dataSrc = video.dataset.src
+		// video.src = dataSrc;
 		
 		// setTimeout(() => {
 		// 	videoWrap.classList.add('play')
 		// }, 2000);
 
-		let playPromise
-		playPromise = video.play()
-		if (playPromise !== undefined) {
-			playPromise.then(e => {
-				logger('then', e);
-				// setTimeout(() => {
-					videoWrap.classList.add('play')
-				// }, 500);
-			}).catch(error => {
-				logger('не загружается: ' + error);
-			});
-		} else {
-			logger('playPromise is undefined')
-		}
+		// let playPromise
+		// playPromise = video.play()
+		// if (playPromise !== undefined) {
+		// 	playPromise.then(e => {
+		// 		logger('then', e);
+		// 		// setTimeout(() => {
+		// 			videoWrap.classList.add('play')
+		// 		// }, 500);
+		// 	}).catch(error => {
+		// 		logger('не загружается: ' + error);
+		// 	});
+		// } else {
+		// 	logger('playPromise is undefined')
+		// }
 
 		
 
