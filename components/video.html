@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="video-wrap">
-			<video class="video" autoplay muted loop playsinline data-src="/video/placeholder4.mp4"></video>
+			<video class="video" muted loop playsinline data-src="/video/placeholder4.mp4"></video>
 			<picture class="video-preview-wrap">
 				<source media="(max-width: 743px)" srcset="/images/test3.jpg">
 				<img class="video-preview" src="/images/test4.jpg">
@@ -49,7 +49,7 @@
 		video.addEventListener("loadedmetadata", handleEvent);
 		video.addEventListener("play", handleEvent);
 		// video.addEventListener("playing", handleEvent);
-		video.addEventListener("progress", handleEvent);
+		// video.addEventListener("progress", handleEvent);
 		// video.addEventListener("canplay", handleEvent);
 		// video.addEventListener("canplaythrough", handleEvent);
 		
@@ -59,6 +59,7 @@
 		if (playPromise !== undefined) {
 			playPromise.then(e => {
 				logger('then', e);
+				videoWrap.classList.add('play')
 			}).catch(error => {
 				logger('не загружается: ' + error);
 			});
@@ -69,17 +70,17 @@
 
 		// logger('playPromise:', playPromise)
 
-		let startTime = Date.now();
-		video.addEventListener('loadeddata', function onLoadedData(e) {
-			console.log('loadeddata');
+		// let startTime = Date.now();
+		// video.addEventListener('loadeddata', function onLoadedData(e) {
+		// 	console.log('loadeddata');
 
-			let elapsedTime = Date.now() - startTime
-			let remainingTime = Math.max(0, 1000 - elapsedTime)
+		// 	let elapsedTime = Date.now() - startTime
+		// 	let remainingTime = Math.max(0, 1000 - elapsedTime)
 
-			setTimeout(() => {
-				videoWrap.classList.add('play')
-			}, remainingTime);
-		})
+		// 	setTimeout(() => {
+		// 		videoWrap.classList.add('play')
+		// 	}, remainingTime);
+		// })
 
 
 
