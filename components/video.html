@@ -17,17 +17,20 @@
 	</style>
 
 	<section class="hero">
-		<div class="container">
+		<!-- <div class="container"> -->
 			<div class="hero-wrapper">
 				<h1 class="hero-title">Video</h1>
 			</div>
-		</div>
+		<!-- </div> -->
+
 		<div class="video-wrap">
 			<video class="video" muted loop playsinline data-src="/video/placeholder4.mp4"></video>
 			<picture class="video-preview-wrap">
 				<source media="(max-width: 743px)" srcset="/images/test3.jpg">
 				<img class="video-preview" src="/images/test4.jpg">
 			</picture>
+			<!-- <img class="video-preview-wrap" src="/images/test4.jpg"> -->
+			<!-- <div class="video-preview-wrap"></div> -->
 		</div>
 	</section>
 
@@ -38,34 +41,43 @@
 		let video = videoWrap.querySelector('.video')
 		let dataSrc = video.dataset.src
 		video.src = dataSrc;
-
-		function handleEvent(event) {
-			log.textContent += `${event.type}\n`;
-		}
-
-
-		video.addEventListener("loadstart", handleEvent);
-		video.addEventListener("loadeddata", handleEvent);
-		video.addEventListener("loadedmetadata", handleEvent);
-		video.addEventListener("play", handleEvent);
-		// video.addEventListener("playing", handleEvent);
-		// video.addEventListener("progress", handleEvent);
-		// video.addEventListener("canplay", handleEvent);
-		// video.addEventListener("canplaythrough", handleEvent);
 		
+		// setTimeout(() => {
+		// 	videoWrap.classList.add('play')
+		// }, 2000);
+
 		let playPromise
 		playPromise = video.play()
-		// logger('playPromise:', playPromise)
 		if (playPromise !== undefined) {
 			playPromise.then(e => {
 				logger('then', e);
-				videoWrap.classList.add('play')
+				// setTimeout(() => {
+					videoWrap.classList.add('play')
+				// }, 500);
 			}).catch(error => {
 				logger('не загружается: ' + error);
 			});
 		} else {
 			logger('playPromise is undefined')
 		}
+
+		
+
+		// function handleEvent(event) {
+		// 	log.textContent += `${event.type}\n`;
+		// }
+
+
+		// video.addEventListener("loadstart", handleEvent);
+		// video.addEventListener("loadeddata", handleEvent);
+		// video.addEventListener("loadedmetadata", handleEvent);
+		// video.addEventListener("play", handleEvent);
+		// video.addEventListener("playing", handleEvent);
+		// video.addEventListener("progress", handleEvent);
+		// video.addEventListener("canplay", handleEvent);
+		// video.addEventListener("canplaythrough", handleEvent);
+
+
 
 
 		// logger('playPromise:', playPromise)
